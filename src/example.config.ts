@@ -1,5 +1,17 @@
-export default {
-    token: '',
+import { Config } from './configtype';
+
+export const config: Config = {
+    token: 'discordBotToken',
     prefix: '',
-    joinRoles: [''],
+    owners: ['userId'],
+    supportInvite: 'invite',
+    guilds: {
+        guildId: {
+            joinRoles: ['roleId'],
+            adminRoles: ['roleId'],
+            selfRoles: {
+                roleName: 'roleId',
+            },
+        },
+    },
 };
