@@ -12,13 +12,14 @@ const client = new CommandoClient({
 import { SuggestMotd } from './commands/SuggestMotd';
 import { RoleMe } from './commands/RoleMe';
 import { ActualMembers } from './commands/ActualMembers';
+import { ChangeMotd } from './commands/ChangeMotd';
 
 client.registry
     .registerDefaultTypes()
     .registerGroups([['general', 'The major commands of this bot']])
     .registerDefaultGroups()
     .registerDefaultCommands()
-    .registerCommands([SuggestMotd, RoleMe, ActualMembers]);
+    .registerCommands([SuggestMotd, RoleMe, ActualMembers, ChangeMotd]);
 //#endregion
 
 //#region Client Extentions
