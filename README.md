@@ -1,2 +1,2 @@
-# disillabot
-Thing for chrono
+# DisillaBot
+> Thing for Chrono
