@@ -1,23 +1,27 @@
 import { CommandoClient } from 'discord.js-commando';
-import config from './config';
+import { config } from './config';
 
 const client = new CommandoClient({
     disableMentions: 'all',
     commandPrefix: config.prefix,
-    invite: 'https://discord.gg/6VbJezy',
-    owner: [
-        '250432205145243649', // Jdender~#2316
-        '251383432331001856', // Chronomly#8108
-    ],
+    invite: config.supportInvite,
+    owner: config.owners,
 });
+
+//#region Registry
+import { SuggestMotd } from './commands/SuggestMotd';
+import { RoleMe } from './commands/RoleMe';
+import { ActualMembers } from './commands/ActualMembers';
 
 client.registry
     .registerDefaultTypes()
     .registerGroups([['general', 'The major commands of this bot']])
     .registerDefaultGroups()
     .registerDefaultCommands()
-    .registerCommands([]);
+    .registerCommands([SuggestMotd, RoleMe, ActualMembers]);
+//#endregion
 
+//#region Client Extentions
 import Enmap from 'enmap';
 
 declare module 'discord.js' {
@@ -28,14 +32,19 @@ declare module 'discord.js' {
 }
 
 client.motds = new Enmap({ name: 'motds' });
+//#endregion
 
+//#region Events
 client.once('ready', () => {
     console.log(`Logged in as ${client.user?.tag}! (${client.user?.id})`);
 });
 
 client.on('guildMemberAdd', member => {
-    member.roles.add(config.joinRoles);
+    const joinRoles = config.guilds[member.guild.id]?.joinRoles;
+    if (!joinRoles) return;
+    member.roles.add(joinRoles);
 });
+//#endregion
 
 // Change this to webhook based logging at some point
 client.on('error', console.error);
