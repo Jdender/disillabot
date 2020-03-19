@@ -7,6 +7,7 @@
         "target": "es2019",
         "module": "commonjs",
         "outDir": "compiled",
+        "esModuleInterop": true,
         "strict": true
     },
     "exclude": [

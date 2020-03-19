@@ -7,11 +7,14 @@
   "author": "Jdender~ <jdenderplays@gmail.com> (https://github.com/Jdender)",
   "license": "AGPL-3.0",
   "scripts": {
-    "dev": "ts-node-dev --files --respawn -r dotenv/config .",
+    "dev": "ts-node-dev --files --respawn .",
     "lint": "eslint '*/**.{js,ts,tsx}' --fix"
   },
   "dependencies": {
-    "discord.js": "^12.0.2"
+    "better-sqlite3": "^6.0.1",
+    "discord.js": "discordjs/discord.js",
+    "discord.js-commando": "discordjs/Commando",
+    "enmap": "^5.2.4"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.1",
@@ -23,7 +26,6 @@
     "@types/node": "^13.9.2",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
-    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
